@@ -1,49 +1,126 @@
+/* 
+testing: 
+ok:
+  Safari 5.1 (browserling)
+  Safari 5.0.5 (browserling)
+  Opera 36, 35, 34  (browserling)
+  Chrome 49, 48, 47, 30, (browserling)
+  Internet Explorer 11 (IE NetRenderer)
+
+problems:
+  Internet Explorer 10, 9, 8 (IE NetRenderer)
+    The quote does not appear.
+    The styling for the source and the tags is not seen.
+
+*/
+
+
 body {
   /*text-align: center;*/
-  background-color: #36b55c;
+  background-color: #006699;
   color: white;
   font-family: 'Playfair Display', serif;
 }
-#quote-box {
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  right: 10%;
-  width: 80%;
+/* Columns - 1000px overall - Col are 65px wide -
+gutters are 20px wide - See Gridulator website for calculations============*/
+  .grid-1 {
+      width: 6.5%
+    }
+    .grid-2 {
+      width: 15%
+    }
+    .grid-3 { 
+      width: 23.5% 
+    }
+    .grid-4 { 
+      width: 32% 
+    }
+    .grid-5 { 
+      width: 40.5% 
+    }
+    .grid-6 { 
+      width: 49% 
+    }
+    .grid-7 { 
+      width: 57.5% 
+    }
+    .grid-8 { 
+      width: 66% 
+    }
+     .grid-9 { 
+      width: 74.5% 
+    }
+     .grid-10 { 
+      width: 83% 
+    }
+     .grid-11 { 
+      width: 91.5% 
+    }
+     .grid-12 { 
+      width: 100% 
+    }
+    
+/* Clearfix - Since we are floating our columns, this
+  clearfix will clear our floats that way our grid container
+  won't collapse.
+  ====================================*/
+  
+#head1,
+#head2,
+#head3 {
+  content: “ “;
+  display: table;
+  clear: both;   
+}
+
+.grid-container1,
+.grid-container2 {
+  display: flex;
+}
+
+#quotation-box {
+  display: block;
+  position: absolute; /* Don't put a margin on absolute positioning */
   line-height: .5;
 }
+
 .quote {
-  font-size: 4rem;
+  font-size: .11em;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.1em;
   position: relative;
-  margin: 0;
-  } 
+  margin: 10% 5% 0 5%;
+  color: white;
+}
 .quote:before, .quote:after {
-  font-size: 6rem;
-  line-height: 2.5rem;
-  position: absolute;
+  font-size: 2.5rem;
+  line-height: 1.1rem;
+  position: relative;
 }
 .quote:before {
   content: "‘";
-  top: .25em;
-  left: -.5em;
+  top: .001em;
+  left: -.25em;
+  position: relative;
 }
 .quote:after {
   content: "’";
-  bottom: -.1em;
+  bottom: -.001em;
   margin-left: .1em;
-  position: absolute;
+  position: relative;
 }
+
 .source {
-  font-size: 1.25rem;;
+  color: white;
+  font-size: 1rem;;
   letter-spacing: 0.05em;
   line-height: 1.1;
   text-align: right;
-  margin-right: 4em;
+  margin-left: 1em;
+  margin-right: 10%;
 }
 .source:before {
-  content: "-";
+content: "- ";
 }
 .citation {
   font-style: italic;
@@ -57,35 +134,194 @@ body {
   font-style: normal;
 }
 
-#loadQuote {
-  position: fixed;
-  width: 12em;
-  display: inline-block;
-  left: 50%;
-  margin-left: -6em;
-  bottom: 150px;
-  border-radius: 4px;
-  border: 2px solid #fff;
-  color: #fff;
-  background-color: #36b55c;
-  padding: 15px 0;
-  transition: .5s ;
-}
-#loadQuote:hover {
-  background-color: rgba(255,255,255,.25);
-}
-#loadQuote:focus {
-  outline: none;
+#tag-box {
+  position: absolute;
 }
 
-@media (max-width: 420px) {
-  .quote {
-    font-size: 2.5rem;
+.all,        /* Works best if you put your margin on the classname at the lowest level*/
+.phil,
+.humor,
+.spirit,
+.lyrics {
+  /*padding: 2% 2% 2% 2%;*/
+  margin: 2% 20% 2% 20%;
+  /*width: 30%;*/
+  /*max-width: 30%;*/
+}
+
+@media only screen and (max-width: 599px) {
+  *, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   }
-  .quote:before, .quote:after {
-    font-size: 3rem;
+  /*.grid-container2 {*/
+  /*  margin: 0 20% 0 20%;*/
+  /*}*/
+
+  #quotation-box {
+    font-size: 20em;
+    display: block;
+    position: absolute;
+    margin: 0;
+    line-height: .5;
+    }
+
+  #tag-box {     /* Our tags go from a column on smaller devices to a row on larger devices */
+    display: block;
+    position: absolute;
+    margin: 500px 0 0 0;
+    width: 100%;    /* This is important to begin balanced on all sides */
   }
-  .source {
-    font-size: 1rem;
+  #tag-all,       /* doesn't work with margins though - use class name */
+  #tag-phil,
+  #tag-humor,
+  #tag-spirit,
+  #tag-lyrics {
+    font-size: 1.3em;
+    color: white;
+    display: block;
+    background-color: darkred;
+    text-align: center;
+
   }
 }
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+ #quotation-box {
+    font-size: 25em;
+    display: block;
+    position: absolute;
+    margin: 0;
+    line-height: .5;
+    }
+
+  .quote:before, .quote:after {
+    font-size: 3rem;
+    line-height: 2.25rem;
+    position: relative;
+  }
+  .quote:before {
+    content: "‘";
+    top: .005em;
+    left: -.25em;
+    position: relative;
+  }
+  .quote:after {
+    content: "’";
+    bottom: -.001em;
+    margin-left: .1em;
+    position: relative;
+  }
+  
+  .source {
+    /*color: white;*/
+    font-size: 1.3rem;;
+    
+  }
+  .source:before {
+  content: "- ";
+  }
+  .citation {
+    font-style: italic;
+  }
+  .citation:before {
+    content: ", ";
+    font-style: normal;
+  }
+  .year:before {
+    content: ", ";
+    font-style: normal;
+  }
+
+
+  #tag-box {     /* Our tags go from a column on smaller devices to a row on larger devices */
+    display: inline;
+    position: absolute;
+    margin: 500px 0 0 7%;
+    width: 100%;    /* This is important to begin balanced on all sides */
+  }
+  #tag-all,       /* doesn't work with margins though - use class name */
+  #tag-phil,
+  #tag-humor,
+  #tag-spirit,
+  #tag-lyrics {
+    margin: 0 2% 0 2%;
+    padding: 2% 1% 2% 1%;
+    font-size: 1.3em;
+    color: white;
+    display: inline;
+    background-color: darkblue;
+    text-align: center;
+    
+  }
+
+}
+    
+@media only screen and (min-width: 801px) {
+  #quotation-box {
+    display: block;
+    position: absolute;
+    margin: 0;
+  }
+  .quote {
+     font-size: 4em;
+  }
+  .quote:before, .quote:after {
+    font-size: 4.5rem;
+    line-height: 1.25rem;
+    position: relative;
+  }
+  .quote:before {
+    content: "‘";
+    top: .005em;
+    left: -.25em;
+    position: relative;
+  }
+  .quote:after {
+    content: "’";
+    bottom: -.001em;
+    margin-left: .1em;
+    position: relative;
+  }
+  .source {
+    font-size: 2rem;;
+  }
+  .source:before {
+  content: "- ";
+  }
+  .citation {
+    font-style: italic;
+  }
+  .citation:before {
+    content: ", ";
+    font-style: normal;
+  }
+  .year:before {
+    content: ", ";
+    font-style: normal;
+  }
+
+
+  #tag-box {     /* Our tags go from a column on smaller devices to a row on larger devices */
+    display: inline;
+    position: absolute;
+    margin: 500px 0 0 7%;
+    width: 100%;    /* This is important to begin balanced on all sides */
+  }
+  #tag-all,       /* doesn't work with margins though - use class name */
+  #tag-phil,
+  #tag-humor,
+  #tag-spirit,
+  #tag-lyrics {
+    margin: 0 2% 0 2%;
+    padding: 1% 2% 1% 2%;
+    font-size: 1.3em;
+    color: white;
+    display: inline;
+    background-color: slategray;
+    text-align: center;
+    
+  }
+
+}
+
