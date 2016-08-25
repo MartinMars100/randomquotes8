@@ -79,7 +79,7 @@ gutters are 20px wide - See Gridulator website for calculations============*/
 }
 
 #quotation-box {
-  display: block;
+  display: block;     /* Absolute positioning helps keep the tags from moving around */
   position: absolute; /* Don't put a margin on absolute positioning */
   line-height: .5;
 }
