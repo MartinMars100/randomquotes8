@@ -181,11 +181,7 @@ function PrintObject(tag) {  //'tag is all, phi, humor, etc...'
 function findObject(tag) {
   for(i=0; i < quotes.length; i++) {   // Search our quotes array
     loop_cnt ++;
-    if (loop_cnt > 500) {   // I put this in to prevent infinite loops
-      alert('Please choose another tag');
-      loop_cnt = 0;
-      break;
-    }
+    
     switch (tag) {      // Return quote that matches our tag user clicked
         case 'all':
              var i = all_cnt;
@@ -246,16 +242,16 @@ function randomBackColor() { // Function changes background color when a tag is 
   document.body.style.background = color; // Setting the random color on your div element.
 }
 
-window.setInterval(function () {
-  PrintObject('all');
-},11000);
+// window.setInterval(function () {
+//   PrintObject('all');
+// },11000);
 
-function toggleGridClass() {  // Not needed afterall
-if (screen.width > 600) {  //  We want to display our tags in a row on large devices
-  document.getElementById("tag-all").classList.toggle("grid-7"); // If it has this class it will be removed
-  document.getElementById("tag-all").classList.toggle("grid-3"); // If it doesn't have this class it will be added
-}
-}
+// function toggleGridClass() {  // Not needed afterall
+// if (screen.width > 600) {  //  We want to display our tags in a row on large devices
+//   document.getElementById("tag-all").classList.toggle("grid-7"); // If it has this class it will be removed
+//   document.getElementById("tag-all").classList.toggle("grid-3"); // If it doesn't have this class it will be added
+// }
+// }
 
 // toggleGridClass();   // Don't need to use this but its nice to know if we ever
                         // need to toggle class.
